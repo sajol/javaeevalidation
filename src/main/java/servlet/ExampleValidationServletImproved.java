@@ -1,6 +1,5 @@
 package servlet;
 
-import common.Form;
 import common.FormUtils;
 import common.validation.ValidationUtils;
 import form.MyForm;
@@ -13,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -35,17 +32,8 @@ public class ExampleValidationServletImproved extends HttpServlet {
             String responseBody = "Hello I Am An Improved Example Servlet\nYour form was saved successfully";
             response.getWriter().write(responseBody);
         } else {
-            request.getRequestDispatcher("/index.jsp").forward(collectErrorMessages(request, violations), response);
+            request.getRequestDispatcher("/index.jsp").forward(ValidationUtils.collectErrorMessages(request, violations), response);
         }
-    }
-
-    private <T extends Form> HttpServletRequest collectErrorMessages(HttpServletRequest request, Set<ConstraintViolation<T>> violations) {
-        List<String> violationMessage = new ArrayList<>();
-        for (ConstraintViolation constraintViolation : violations) {
-            violationMessage.add(constraintViolation.getMessage());
-        }
-        request.setAttribute("errors", violationMessage);
-        return request;
     }
 
     @Override

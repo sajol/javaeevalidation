@@ -28,14 +28,14 @@ public class ExampleValidationServlet extends HttpServlet {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         List<String> validationErrors = new ArrayList<>();
-        if(StringUtils.isBlank(firstName)){
+        if (StringUtils.isBlank(firstName)) {
             validationErrors.add("First name should not be empty");
         }
-        if(StringUtils.isBlank(lastName)){
+        if (StringUtils.isBlank(lastName)) {
             validationErrors.add("Last name should not be empty");
         }
 
-        if(CollectionUtils.isNotEmpty(validationErrors)){
+        if (CollectionUtils.isNotEmpty(validationErrors)) {
             request.setAttribute("errors", validationErrors);
             request.getRequestDispatcher("index.jsp").forward(request, response);
             return;
