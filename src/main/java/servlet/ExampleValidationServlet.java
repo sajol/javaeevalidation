@@ -34,17 +34,12 @@ public class ExampleValidationServlet extends HttpServlet {
         if (StringUtils.isBlank(lastName)) {
             validationErrors.add("Last name should not be empty");
         }
-
         if (CollectionUtils.isNotEmpty(validationErrors)) {
             request.setAttribute("errors", validationErrors);
             request.getRequestDispatcher("index.jsp").forward(request, response);
             return;
         }
-
-        String responseBody = "Hello I Am An Example Servlet\n" +
-                "Your inputs were\n" +
-                "First name : " + firstName + "\n" +
-                "Last name: " + lastName + "\n";
+        String responseBody = "Hello I Am An Example Servlet\nYour form was saved successfully";
         response.getWriter().write(responseBody);
     }
 
