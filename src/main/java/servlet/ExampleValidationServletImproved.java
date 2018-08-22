@@ -19,7 +19,7 @@ import java.util.Set;
  * Date: 10/30/17
  */
 @WebServlet(
-        name = "ExampleValidationServlet",
+        name = "ExampleValidationServletImproved",
         description = "An improved example servlet",
         urlPatterns = {"/example-improved"}
 )
